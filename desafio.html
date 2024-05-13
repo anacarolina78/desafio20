@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eleição</title>
+  </head>
+  <body>
+    <h1>Eleição</h1>
+    <button onclick="votar()">Votar</button>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: brown;
+        justify-content: center;
+        display: flex;
+        height: 100vh;
+        align-items: center;
+      }
+      h1 {
+        text-align: center;
+        font-size: 35px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        color: white;
+      }
+      button {
+        border: none;
+        border-radius: 20px;
+        margin: 10px;
+        padding: 10px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      let candidatos = {
+        Ana: 0,
+        Bianca: 0,
+        Carlos: 0,
+        Danilo: 0,
+        Nulo: 0,
+      };
+
+      function votar() {
+        let voto = prompt(
+          "Digite o número do candidato (1 a 4) ou 0 para Nulo:"
+        );
+
+        switch (voto) {
+          case "1":
+            candidatos["Ana"]++;
+            break;
+          case "2":
+            candidatos["Bianca"]++;
+            break;
+          case "3":
+            candidatos["Carlos"]++;
+            break;
+          case "4":
+            candidatos["Danilo"]++;
+            break;
+          case "0":
+            candidatos["Nulo"]++;
+            break;
+          default:
+            alert("Voto Inválido!");
+            votar();
+            break;
+        }
+
+        let continuar = confirm("Votar novamente?");
+        if (continuar) {
+          votar();
+        } else {
+          finalizar();
+        }
+      }
+
+      function finalizar() {
+        alert(
+          "Votação encerrada\n\nResultado da eleição:" +
+            `Candidato 1(Ana): ${candidatos["Ana"]} voto(s)\n` +
+            `Candidato 2(Bianca): ${candidatos["Bianca"]} voto(s)\n` +
+            `Candidato 3(Carlos): ${candidatos["Carlos"]} voto(s)\n` +
+            `Candidato 4(Danilo): ${candidatos["Danilo"]} voto(s)\n` +
+            `Nulo: ${candidatos["Nulo"]} voto(s)`
+        );
+      }
+
+      function votarNovamente() {
+        votar();
+      }
+    </script>
+  </body>
+</html>
